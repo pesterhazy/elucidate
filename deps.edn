@@ -1,0 +1,1 @@
+{:deps {lambdaisland/deep-diff2 {:mvn/version "2.9.202"}}}
