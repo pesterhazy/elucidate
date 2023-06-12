@@ -22,7 +22,7 @@ expected: (= {:foo 1, :bar 2} {:foo -1, :bar 2})
   actual: (not (= {:foo 1, :bar 2} {:foo -1, :bar 2}))
 ```
 
-OK, so let's copy what comes after `actual:` to the clipboard. The clipboard should now contain this string:
+So let's copy what comes after `actual:` to the clipboard. The clipboard should now contain this string:
 
 ```
 (not (= {:foo 1, :bar 2} {:foo -1, :bar 2}))
@@ -34,7 +34,7 @@ Now you can pipe the result into `elucidate`:
 pbpaste | clojure -Sdeps '{:deps {io.github.pesterhazy/elucidate {:git/sha "924d710f48dc82addbe332261291bf757c5ecc69"}}}' -M -m elucidate.main
 ```
 
-It looks like this:
+The output looks like this:
 
 ![screenshot](screenshot.jpg)
 
