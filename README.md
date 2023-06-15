@@ -4,9 +4,7 @@
 
 "Unleash the power of copy-and-paste"
 
-```
-echo '(not (= {:foo 1 :bar 2} {:foo -1 :bar 2}))' | elucidate
-```
+![screenshot](screenshot.jpg)
 
 ## Installation
 
