@@ -7,9 +7,14 @@
   (let [data (clojure.edn/read-string (slurp *in*))]
     (assert (and (list? data)
                  (= 2 (count data))
-                 (= 'not (first data))
-                 (list? (second data))
-                 (= 3 (count (second data)))
-                 (= '= (first (second data)))))
-    (let [[_ a b] (second data)]
-      (ddiff/pretty-print (ddiff/diff a b)))))
+                 (= 'not (first data))))
+    (cond
+      (and (list? (second data))
+           (= 3 (count (second data)))
+           (= '= (first (second data))))
+      (let [[_ a b] (second data)]
+        (ddiff/pretty-print (ddiff/diff a b)))
+      :else
+      (do
+        (println "Didn't understand form")
+        (System/exit 1)))))
