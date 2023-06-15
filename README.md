@@ -76,7 +76,7 @@ clojure.test/is prints failures in a concise, readable way. But when checking eq
 
 `elucidate` takes the opposite approach. When a test fails, you copy-and-paste the failure output into a separate program. This gives you an optional way to make the output more digestible without adding complexity to the test runner. It works with Clojure/ClojureScript/babashka.
 
-## Future work
+## Predicates
 
 The following assertions are supported:
 
