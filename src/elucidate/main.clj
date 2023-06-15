@@ -33,7 +33,7 @@
     nil))
 
 (defn -main [& _args]
-  (let [data (clojure.edn/read-string (slurp *in*))
+  (let [data (->form (slurp *in*))
         form (extract data)]
     (when-not form
       (do
