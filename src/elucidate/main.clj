@@ -1,7 +1,15 @@
 (ns elucidate.main
   (:require [clojure.edn]
             [clojure.pprint]
+            [clojure.string]
             [lambdaisland.deep-diff2 :as ddiff]))
+
+(defn ->form [s]
+  (if (re-find #"^\s*\(" s)
+    (clojure.edn/read-string s)
+    (if-let [m (re-find #"actual: (\(.+)" s)]
+      (clojure.edn/read-string (second m))
+      nil)))
 
 (defn extract [form]
   (when (and (list? form)
