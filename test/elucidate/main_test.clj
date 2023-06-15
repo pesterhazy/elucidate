@@ -8,3 +8,9 @@
 
 (deftest extract-simple
   (is (= '(= 0 1) (x/extract '(not (= 0 1))))))
+
+(deftest ab-=
+  (is (= [0 1] (x/ab '(= 0 1)))))
+
+(deftest ab-submap?
+  (is (= [{:a 1} {:a 2}] (x/ab '(submap? {:a 1} {:a 2 :b 1})))))
