@@ -4,15 +4,33 @@
 
 "Unleash the power of copy-and-paste"
 
+```
+echo '(not (= {:foo 1 :bar 2} {:foo -1 :bar 2}))' | elucidate
+```
+
+## Installation
+
+You need to install [bbin](https://github.com/babashka/bbin):
+
+```
+brew install babashka/brew/bbin
+```
+
+and
+
+```
+echo 'export PATH="$PATH:$HOME/.babashka/bbin/bin"' >> ~/.$(basename $SHELL)rc && exec $SHELL
+```
+
+With that out of the way, you can now use bbin to install elucidate:
+
+```
+bbin install io.github.pesterhazy/elucidate
+```
+
 ## Usage
 
-Easy:
-
-```
-echo '(is (= {:foo 1 :bar 2} {:foo -1 :bar 2}))' | clojure -Sdeps '{:deps {io.github.pesterhazy/elucidate {:git/sha "924d710f48dc82addbe332261291bf757c5ecc69"}}}' -M -m elucidate.main
-```
-
-OK, maybe not so easy. One step at a time. By default, the output of clojure.test assertions can be hard to read:
+One step at a time. By default, the output of clojure.test assertions can be hard to read:
 
 ```
 user=> (is (= {:foo 1 :bar 2} {:foo -1 :bar 2}))
@@ -31,7 +49,7 @@ So let's copy what comes after `actual:` to the clipboard. The clipboard should 
 Now you can pipe the result into `elucidate`:
 
 ```
-pbpaste | clojure -Sdeps '{:deps {io.github.pesterhazy/elucidate {:git/sha "924d710f48dc82addbe332261291bf757c5ecc69"}}}' -M -m elucidate.main
+pbpaste | elucidate
 ```
 
 The output looks like this:
