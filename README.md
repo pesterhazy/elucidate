@@ -50,9 +50,12 @@ Now you can pipe the result into `elucidate`:
 pbpaste | elucidate
 ```
 
-The output looks like this:
+The output should look like this:
 
-![screenshot](screenshot.jpg)
+```
+{:bar 2, :foo -1 +-1}
+```
+
 
 ## Why?
 
