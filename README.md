@@ -56,6 +56,15 @@ The output should look like this:
 {:bar 2, :foo -1 +-1}
 ```
 
+You can also copy the entire assertion failure output:
+
+```
+FAIL in () (NO_SOURCE_FILE:1)
+expected: (= {:foo 1, :bar 2} {:foo -1, :bar 2})
+  actual: (not (= {:foo 1, :bar 2} {:foo -1, :bar 2}))
+```
+
+and `elucidate` will find the "actual" part automatically.
 
 ## Why?
 
@@ -69,10 +78,10 @@ clojure.test/is prints failures in a concise, readable way. But when checking eq
 
 ## Future work
 
-Currently only `=` is supported. Future extensions could include:
+The following assertions are supported:
 
-- `not=`
-- `submap?`
+- `(is (= v1 v2))`
+- `(is (submap? v1 v2))` ([submap?](https://github.com/clojure/spec-alpha2/blob/74ada9d5111aa17c27fdef9c626ac6b4b1551a3e/src/test/clojure/clojure/test_clojure/spec.clj#L18-L25))
 
 ## Credit
 
