@@ -3,11 +3,19 @@
             [clojure.pprint]
             [lambdaisland.deep-diff2 :as ddiff]))
 
+(defn extract [form]
+  (when (and (list? form)
+             (= 2 (count form))
+             (= 'not (first form)))
+    (second form)))
+
 (defn -main [& _args]
-  (let [data (clojure.edn/read-string (slurp *in*))]
-    (assert (and (list? data)
-                 (= 2 (count data))
-                 (= 'not (first data))))
+  (let [data (clojure.edn/read-string (slurp *in*))
+        form (extract data)]
+    (when-not form
+      (do
+        (println "Didn't understand form")
+        (System/exit 1)))
     (cond
       (and (list? (second data))
            (= 3 (count (second data)))

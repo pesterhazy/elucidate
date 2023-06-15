@@ -3,5 +3,8 @@
    [clojure.test :refer [deftest is]]
    [elucidate.main :as x]))
 
-(deftest banana
-  (is (= 0 1)))
+(deftest extract-null
+  (is (= nil (x/extract '()))))
+
+(deftest extract-simple
+  (is (= '(= 0 1) (x/extract '(not (= 0 1))))))
